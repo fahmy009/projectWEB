@@ -60,7 +60,7 @@
 						if ($mahasiswa['hasil'] == 'Diterima') {
 							$hasil = 'btn-success';
 						} else {
-							$hasil = 'btn-danger';
+							$hasil = 'btn-warning';
 						}
 						echo "
 						<tr>
@@ -68,7 +68,8 @@
 						<td><span>$mahasiswa[nama_mahasiswa]</span></td>
 						<td><span>$mahasiswa[divisi]</span></td>
 						<td class=\"text-center\">
-						<a href=\"#\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button></a>
+						<button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button>
+						<button type=\"button\" class=\"btn btn-danger\" style=\"width: 100px;\"><span>Hapus</span></button>
 						</td>
 						</tr>
 						";

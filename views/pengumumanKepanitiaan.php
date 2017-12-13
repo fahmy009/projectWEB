@@ -36,7 +36,7 @@
 						if ($kepanitiaan['hasil'] == 'Diterima') {
 							$hasil = 'btn-success';
 						} else {
-							$hasil = 'btn-danger';
+							$hasil = 'btn-warning';
 						}
 						echo "
 						<tr>

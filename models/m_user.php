@@ -7,7 +7,6 @@
     }
 
     function autentikasi($username,$password){
-      $password = $password;
       $result   = $this->db->query("select * from user where username='$username' and password='$password'");
       return $result;
     }
