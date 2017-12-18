@@ -1,3 +1,6 @@
+<?php  
+require 'tampilan.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,14 +38,16 @@
 					foreach ($kepanitiaan as $kepanitiaan) {
 						if ($kepanitiaan['hasil'] == 'Diterima') {
 							$hasil = 'btn-success';
+						} else if ($kepanitiaan['hasil'] == 'Ditolak') {
+							$hasil = 'btn-danger';
 						} else {
 							$hasil = 'btn-warning';
 						}
 						echo "
 						<tr>
 						<td><span>$kepanitiaan[id_kepanitiaan]</span></td>
-						<td><span>$kepanitiaan[nama_ketua]</span></td>
-						<td><span>$kepanitiaan[kepanitiaan]</span></td>
+						<td class=\"text-center\"><span>$kepanitiaan[nama_ketua]</span></td>
+						<td class=\"text-center\"><span>$kepanitiaan[kepanitiaan]</span></td>
 						<td style=\"text-align: justify;\"><span>$kepanitiaan[deskripsi]</span></td>
 						<td class=\"text-center\">	
 						<a href=\"#\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$kepanitiaan[hasil]</span></button></a>

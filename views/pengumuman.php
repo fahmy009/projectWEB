@@ -1,3 +1,6 @@
+<?php  
+require 'tampilan.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +39,8 @@
 					foreach ($mahasiswa as $mahasiswa) {
 						if ($mahasiswa['hasil'] == 'Diterima') {
 							$hasil = 'btn-success';
+						} else if ($mahasiswa['hasil'] == 'Ditolak') {
+							$hasil = 'btn-danger';
 						} else {
 							$hasil = 'btn-warning';
 						}

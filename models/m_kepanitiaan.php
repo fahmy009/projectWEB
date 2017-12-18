@@ -7,7 +7,12 @@ class m_kepanitiaan{
 	}
 
 	function showTable(){
-		$result   = $this->db->query("select * from kepanitiaan");
+		$result   = $this->db->query("select * from macam_kepanitiaan where hasil<>'Menunggu'");
+		return $result;
+	}
+
+	function showTableMenunggu(){
+		$result   = $this->db->query("select * from macam_kepanitiaan where hasil='Menunggu'");
 		return $result;
 	}
 
@@ -16,16 +21,28 @@ class m_kepanitiaan{
 		return $result;
 	}
 
-	function delete($nim){
-		$this->db->query("delete from kepanitiaan where nim='$nim'");
+	function hapus($id){
+		$this->db->query("delete from macam_kepanitiaan where id_kepanitiaan='$id'");
+	}
+
+	function terima($id){
+		$this->db->query("update macam_kepanitiaan set hasil='Diterima' where id_kepanitiaan=$id");
+	}
+
+	function tolak($id){
+		$this->db->query("update macam_kepanitiaan set hasil='Ditolak' where id_kepanitiaan=$id");
 	}
 
 	function tambah($nim, $nama, $kepanitiaan, $divisi, $nomor_hp, $deskripsi){
-		$this->db->executeQuery("insert into kepanitiaan values('$nim', '$nama', '$kepanitiaan', '$divisi', '$nomor_hp', '$deskripsi')");
+		$this->db->executeQuery("insert into macam_kepanitiaan values(null,'$nim', '$nama', '$kepanitiaan', '$divisi', '$nomor_hp', '$deskripsi','Menunggu')");
 	}
 
 	function update($nim, $nama, $kepanitiaan, $divisi, $nomor_hp, $deskripsi){
-		$this->db->executeQuery("update kepanitiaan set nama_ketua='$nama',nama_kepanitiaan='$kepanitiaan',divisi='$divisi',nomor_hp='$nomor_hp', deskripsi='$deskripsi' where nim='$nim'");
+		$this->db->executeQuery("update macam_kepanitiaan set nama_ketua='$nama',nama_kepanitiaan='$kepanitiaan',divisi='$divisi',nomor_hp='$nomor_hp', deskripsi='$deskripsi' where nim='$nim'");
+	}
+
+	function updateKepanitiaan($id, $nama, $kepanitiaan, $deskripsi, $hasil){
+		$this->db->executeQuery("update macam_kepanitiaan set nama_ketua='$nama',kepanitiaan='$kepanitiaan',deskripsi='$deskripsi',hasil='$hasil' where id_kepanitiaan='$id'");
 	}
 }
 ?>

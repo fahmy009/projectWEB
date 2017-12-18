@@ -52,6 +52,7 @@
 						<th>Nama Lengkap</th>
 						<th>Divisi</th>
 						<th class="text-center">Hasil</th>
+						<th class="text-center">Aksi</th>
 					</tr>
 					<?php 
 					$model = new m_panitia();
@@ -60,15 +61,15 @@
 						if ($mahasiswa['hasil'] == 'Diterima') {
 							$hasil = 'btn-success';
 						} else {
-							$hasil = 'btn-warning';
+							$hasil = 'btn-danger';
 						}
 						echo "
 						<tr>
 						<td width=\"20%\"><span>$mahasiswa[nim]</span></td>
 						<td><span>$mahasiswa[nama_mahasiswa]</span></td>
 						<td><span>$mahasiswa[divisi]</span></td>
+						<td class=\"text-center\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button></td>
 						<td class=\"text-center\">
-						<button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button>
 						<button type=\"button\" class=\"btn btn-danger\" style=\"width: 100px;\"><span>Hapus</span></button>
 						</td>
 						</tr>

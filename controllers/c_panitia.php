@@ -17,6 +17,10 @@ class c_panitia {
     include_once('./views/adminPanitia/penilaianPanitia.php');
   }
 
+  function pengumuman(){
+    include_once('./views/pengumuman.php');
+  }
+
   function hapus(){
    $nim = $_GET['nim'];
    $model = new m_panitia();
@@ -36,7 +40,7 @@ function tambah(){
    $nomor_hp = $_POST['nomor_hp'];
    $model = new m_panitia();
    $model->tambah($nim, $nama, $kepanitiaan, $alasanKepanitiaan, $divisi, $alasan, $pengalaman, $ide, $nomor_hp);
-   $this->config['route']->redirect('c_panitia','index');
+   $this->config['route']->redirect('c_panitia','penilaian');
 }
 
 function edit(){
@@ -44,14 +48,14 @@ function edit(){
     $nama = $_POST['nama'];
     $kepanitiaan = $_POST['kepanitiaan'];
     $alasanKepanitiaan = $_POST['alasanKepanitiaan'];
-    $divisi = $_POST['divisi'];
     $alasan = $_POST['alasan'];
     $pengalaman = $_POST['pengalaman'];
     $ide = $_POST['ide'];
     $nomor_hp = $_POST['nomor_hp'];
+    $divisi = $_POST['divisi'];
     $model = new m_panitia();
     $model->update($nim, $nama, $kepanitiaan, $alasanKepanitiaan, $divisi, $alasan, $pengalaman, $ide, $nomor_hp);
-    $this->config['route']->redirect('c_panitia','index');
+    $this->config['route']->redirect('c_panitia','penilaian');
 }
 
 function tampilkanDetail(){
@@ -67,7 +71,6 @@ function nilai(){
   $loyalitas = $_POST['loyalitas'];
   $komitmen = $_POST['komitmen'];
   $kedisplinan = $_POST['kedisplinan'];
-  $model = new m_panitia();
   $nilai = $kejujuran + $loyalitas + $komitmen + $kedisplinan;
   
   if ($nilai == 40) {
@@ -86,8 +89,9 @@ function nilai(){
     $status = 'Ditolak';
   }
 
+  $model = new m_panitia();
   $model->updateNilai($nim, $hasil, $status);
-  $this->config['route']->redirect('c_panitia', 'index');
+  $this->config['route']->redirect('c_panitia', 'penilaian');
 }
 
 }

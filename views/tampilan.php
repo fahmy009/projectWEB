@@ -103,22 +103,22 @@
 					</div>
 					<label>Divisi Yang dibutuhkan : </label>
 					<div class="checkbox">
-						&nbsp;&nbsp;&nbsp;<label><input name="divisi" type="checkbox" value="kesekretariatan">Kesekretariatan</label>
+						&nbsp;&nbsp;&nbsp;<label><input name="divisi[]" type="checkbox" value="kesekretariatan">Kesekretariatan</label>
 					</div>
 					<div class="checkbox">
-						&nbsp;&nbsp;&nbsp;<label><input name="divisi" type="checkbox" value="konsumsi">Konsumsi</label>
+						&nbsp;&nbsp;&nbsp;<label><input name="divisi[]" type="checkbox" value="konsumsi">Konsumsi</label>
 					</div>
 					<div class="checkbox">
-						&nbsp;&nbsp;&nbsp;<label><input name="divisi" type="checkbox" value="acara">Acara</label>
+						&nbsp;&nbsp;&nbsp;<label><input name="divisi[]" type="checkbox" value="acara">Acara</label>
 					</div>
 					<div class="checkbox">
-						&nbsp;&nbsp;&nbsp;<label><input name="divisi" type="checkbox" value="perlengkapan">Perlengkapan</label>
+						&nbsp;&nbsp;&nbsp;<label><input name="divisi[]" type="checkbox" value="perlengkapan">Perlengkapan</label>
 					</div>
 					<div class="checkbox">
-						&nbsp;&nbsp;&nbsp;<label><input name="divisi" type="checkbox" value="pubdekdok">Pubdekdok</label>
+						&nbsp;&nbsp;&nbsp;<label><input name="divisi[]" type="checkbox" value="pubdekdok">Pubdekdok</label>
 					</div>
 					<div class="checkbox">
-						&nbsp;&nbsp;&nbsp;<label><input name="divisi" type="checkbox" value="humas">Humas</label>
+						&nbsp;&nbsp;&nbsp;<label><input name="divisi[]" type="checkbox" value="humas">Humas</label>
 					</div>
 					<div class="form-group">
 						<label for="nomer">Nomor HP / Telepon</label>

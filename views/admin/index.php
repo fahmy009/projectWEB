@@ -1,7 +1,3 @@
-<?php 
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,18 +53,18 @@
 					</tr>
 					<?php 
 					$model = new m_kepanitiaan();
-					$kepanitiaan = $model->showTable();
+					$kepanitiaan = $model->showTableMenunggu();
 					foreach ($kepanitiaan as $kepanitiaan) {
 						echo "
 						<tr>
 						<td width=\"20%\"><span>$kepanitiaan[nim]</span></td>
 						<td><span>$kepanitiaan[nama_ketua]</span></td>
-						<td><span>$kepanitiaan[nama_kepanitiaan]</span></td>
-						<td><span>$kepanitiaan[nomor_hp]</span></td>
+						<td><span>$kepanitiaan[kepanitiaan]</span></td>
+						<td><span>$kepanitiaan[nomorhp]</span></td>
 						<td>
-							<a href=\"\"><button type=\"button\" class=\"btn btn-danger\"><span class='fa fa-edit'></span> Tolak</button></a>
-							<a href=\"\"><button type=\"button\" class=\"btn btn-success\" style=\"background-color: #007A87; color: #fff;\"><span class='fa fa-edit'></span> Terima</button></a>
-							<a href=\"#myModal2\"><button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal2\"><span>Detail</span></button></a>
+						<a href=\"index.php?c=c_kepanitiaan&f=tolak&id=$kepanitiaan[id_kepanitiaan]\"><button type=\"button\" class=\"btn btn-danger\"><span class='fa fa-edit'></span> Tolak</button></a>
+						<a href=\"index.php?c=c_kepanitiaan&f=terima&id=$kepanitiaan[id_kepanitiaan]\"><button type=\"button\" class=\"btn btn-success\" style=\"background-color: #007A87; color: #fff;\"><span class='fa fa-edit'></span> Terima</button></a>
+						<button id=\"coba\" data-id=\"$kepanitiaan[nim]\" type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal$kepanitiaan[nim]\" ><span>Detail</span></button>
 						</td>
 						</tr>
 						";
@@ -77,66 +73,49 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">Pendaftaran Panitia</h4>
-				</div>
-				<div class="modal-body">
-					<table class="table table-striped" width="100%">
-						<tr>
-							<th width="25%">NIM</th>
-							<td width="1%"> : </td>
-							<td> <span>152410101082</span></td>
-						</tr>
-						<tr>
-							<th width="25%">Nama Ketua Panitia</th>
-							<td width="1%"> : </td>
-							<td> <span>Muhammad Fahmy Amirun Nizar</span></td>
-						</tr>
-						<tr>
-							<th width="25%">Nama Kepanitiaan</th>
-							<td width="1%"> : </td>
-							<td> <span>Pelatihan Linux</span></td>
-						</tr>
-						<tr>
-							<th width="25%">Deskripsi Kepanitiaan</th>
-							<td width="1%"> : </td>
-							<td> <span>Kepanitiaan yang akan mengajari tentang linux dari dasaradjknawjdnawmkdnawkldnklawnmdlknawkd alkwndkawkdawkdklawnd Logout Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-							proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span></td>
-						</tr>
-						<tr>
-							<th width="25%">Divisi Yang Dibutuhkan</th>
-							<td width="1%"> : </td>
-							<td>
-								<div class="checkbox">
-									&nbsp;&nbsp;&nbsp;<label><input type="checkbox" value="kesekretariatan">Kesekretariatan</label>
-								</div>
-								<div class="checkbox">
-									&nbsp;&nbsp;&nbsp;<label><input type="checkbox" value="konsumsi">Konsumsi</label>
-								</div>
-								<div class="checkbox">
-									&nbsp;&nbsp;&nbsp;<label><input type="checkbox" value="acara">Acara</label>
-								</div>
-								<div class="checkbox">
-									&nbsp;&nbsp;&nbsp;<label><input type="checkbox" value="perlengkapan">Perlengkapan</label>
-								</div>
-								<div class="checkbox">
-									&nbsp;&nbsp;&nbsp;<label><input type="checkbox" value="pubdekdok">Pubdekdok</label>
-								</div>
-								<div class="checkbox">
-									&nbsp;&nbsp;&nbsp;<label><input type="checkbox" value="humas">Humas</label>
-								</td>
-							</tr>  
+	<?php
+	$model = new m_kepanitiaan();
+	$mahasiswa = $model->showTablePengumuman();
+	foreach ($mahasiswa as $mahasiswa) {
+		$datamodal = "myModal".$mahasiswa['nim'];
+		?>
+		<div class="modal fade" id="<?php echo $datamodal ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myModalLabel">Pendaftaran Panitia</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table table-striped" width="100%" id="table-modal">
 							<tr>
-								<th width="25%">Nomor Handphone</th>
-								<td width="1%"> : </td>
-								<td><span>082330750358</span></td>
+								<th width=\"25%\">NIM</th>
+								<td width=\"1%\"> : </td>
+								<td><span id=\"nim\"><?php echo "$mahasiswa[nim]" ?></span></td>
+							</tr>
+							<tr>
+								<th width=\"25%\">Nama Lengkap</th>
+								<td width=\"1%\"> : </td>
+								<td><span id=\"nama\"><?php echo "$mahasiswa[nama_ketua]" ?></span></td>
+							</tr>
+							<tr>
+								<th width=\"25%\">Nama Kepanitiaan</th>
+								<td width=\"1%\"> : </td>
+								<td> <span id=\"alasan\"><?php echo "$mahasiswa[kepanitiaan]" ?></span></td>
+							</tr>
+							<tr>
+								<th width=\"25%\">Divisi Yang Dibutuhkan</th>
+								<td width=\"1%\"> : </td>
+								<td><span id=\"divisi\"><?php echo "$mahasiswa[divisi]" ?></span></td>
+							</tr>
+							<tr>
+								<th width=\"25%\">Nomot Handphone</th>
+								<td width=\"1%\"> : </td>
+								<td><span id=\"ide\"><?php echo "$mahasiswa[nomorhp]" ?></span></td>
+							</tr>
+							<tr>
+								<th width=\"25%\">Deskripsi Kepanitiaan</th>
+								<td width=\"1%\"> : </td>
+								<td><span id=\"nomor_hp\"><?php echo "$mahasiswa[deskripsi]" ?></span></td>
 							</tr>
 						</table>
 					</div><!-- Batas Container Input -->
@@ -146,5 +125,24 @@
 				</div>
 			</div>
 		</div>
+		<?php } ?>
+		<script type="text/javascript">
+			function setData(id) {
+				var id_kepanitiaan = id;
+				// alert(id_kepanitiaan);
+				<?php 
+				$model = new m_kepanitiaan();
+				$mahasiswa = $model->showTablePengumuman();
+				foreach ($mahasiswa as $mahasiswa) {
+					echo "if (id_kepanitiaan=='$mahasiswa[id_kepanitiaan]') 
+					{\$(\"#nama_ketua\").val(\"$mahasiswa[nama_ketua]\");
+					\$(\"#nama_kepanitiaan\").val(\"$mahasiswa[kepanitiaan]\");
+					\$(\"#deskripsi\").val(\"$mahasiswa[deskripsi]\");
+					\$(\"#hasil\").val(\"$mahasiswa[hasil]\");
+					\$(\"#id\").val(\"$mahasiswa[id_kepanitiaan]\");}";
+				}
+				?>
+			}
+		</script>
 	</body>
 	</html>

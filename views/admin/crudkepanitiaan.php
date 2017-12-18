@@ -1,7 +1,3 @@
-<?php 
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,25 +47,76 @@
 				<br>
 				<table class="table table-striped">
 					<tr>
-						<th width="5%">No.</th>
+						<th width="10%">No.</th>
+						<th>Ketua Panitia</th>
+						<th>Nama Kegiatan</th>
+						<th class="text-center">Hasil</th>
 						<th></th>
-						<th width="20%">Nama Kegiatan</th>
-						<th></th>
-						<th></th>
+						<th class="text-center">Aksi</th>
 					</tr>
-					<tr>
-						<td width="5%">1</td>
-						<td width="20%"></td>
-						<td width="20%"><span>Pelatihan Linux</span></td>
-						<td width="30%"></td>
-						<td>
-							<button type="button" class="btn btn-danger"><span class="fa fa-trash"></span> Hapus</button>
-							&nbsp;
-							<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"><span class="fa fa-edit"></span> Tampilkan</button>
+					<?php 
+					$model = new m_kepanitiaan();
+					$mahasiswa = $model->showTable();
+					foreach ($mahasiswa as $mahasiswa) {
+						if ($mahasiswa['hasil'] == 'Diterima') {
+							$hasil = 'btn-success';
+						} else {
+							$hasil = 'btn-danger';
+						}
+						echo "
+						<tr>
+						<td width=\"10%\"><span>$mahasiswa[id_kepanitiaan]</span></td>
+						<td><span>$mahasiswa[nama_ketua]</span></td>
+						<td><span>$mahasiswa[kepanitiaan]</span></td>
+						<td class=\"text-center\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button></td>
+						<td></td>
+						<td style=\"text-align: center;\">
+						<button class=\"btn btn-info\"  onclick=\"setData($mahasiswa[id_kepanitiaan])\" data-toggle=\"modal\" data-target=\"#formEdit\">Edit</button> 
+						<a href=\"index.php?c=c_kepanitiaan&f=hapus&id=$mahasiswa[id_kepanitiaan]\"><button class=\"btn btn-danger\">Hapus</button></a>
+						<button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal\"><span class=\"fa fa-edit\"></span> Tampilkan</button>
 						</td>
-					</tr>
+						</tr>
+						";
+					}?>
 				</table>
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="formEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Edit Kepanitaan</h4>
+							</div>
+							<form method="POST" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_kepanitiaan&f=edit'?>">
+								<div class="modal-body">
+									<div class="form-group">
+										<label>Nama Ketua</label>
+										<input type="text" name="nama_ketua" id="nama_ketua" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>Kepanitiaan</label>
+										<input type="text" name="kepanitiaan" id="nama_kepanitiaan" class="form-control">
+									</div>
+									<div class="form-group">
+										<label >Deskripsi</label>
+										<textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+									</div>
+									<div class="form-group">
+										<label >Hasil</label>
+										<select class="form-control" id="hasil">
+											<option>Diterima</option>
+											<option>Ditolak</option>
+										</select>
+									</div>
+									<input type="hidden" name="id_kepanitiaan" id="id">
+								</div>
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-primary">Simpan</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header" style="background-color: #007A87; color: #fff; border-radius: 3px 3px 0px 0px;">
@@ -145,7 +192,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -214,5 +261,23 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function setData(id) {
+			var id_kepanitiaan = id;
+			// alert(id_kepanitiaan);
+			<?php 
+			$model = new m_kepanitiaan();
+			$mahasiswa = $model->showTablePengumuman();
+			foreach ($mahasiswa as $mahasiswa) {
+				echo "if (id_kepanitiaan==$mahasiswa[id_kepanitiaan]) 
+				{\$(\"#nama_ketua\").val(\"$mahasiswa[nama_ketua]\");
+				\$(\"#nama_kepanitiaan\").val(\"$mahasiswa[kepanitiaan]\");
+				\$(\"#deskripsi\").val(\"$mahasiswa[deskripsi]\");
+				\$(\"#hasil\").val(\"$mahasiswa[hasil]\");
+				\$(\"#id\").val(\"$mahasiswa[id_kepanitiaan]\");}";
+			}
+			?>
+		}
+	</script>
 </body>
 </html>

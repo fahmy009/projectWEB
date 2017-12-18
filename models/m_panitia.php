@@ -6,13 +6,13 @@ class m_panitia{
 		$this->db = new Database('localhost','3306','projectweb','root','');
 	}
 
-	// function showTable($kepanitiaan){
-	// 	$result   = $this->db->query("select * from mahasiswa where nama_kepanitiaan='$kepanitiaan'");
-	// 	return $result;
-	// }
-
 	function showTable(){
-		$result   = $this->db->query("select * from mahasiswa");
+		$result   = $this->db->query("select * from mahasiswa where hasil<>'Menunggu'");
+		return $result;
+	}
+
+	function showTableMenunggu(){
+		$result   = $this->db->query("select * from mahasiswa where hasil='Menunggu'");
 		return $result;
 	}
 
@@ -26,7 +26,7 @@ class m_panitia{
 	}
 
 	function tambah($nim, $nama, $kepanitiaan, $alasanKepanitiaan, $divisi, $alasan, $pengalaman, $ide, $nomor_hp){
-		$this->db->executeQuery("insert into mahasiswa values('$nim','$nama','$kepanitiaan','$alasanKepanitiaan','$divisi','$alasan','$pengalaman','$ide','$nomor_hp')");
+		$this->db->executeQuery("insert into mahasiswa values('$nim','$nama','$kepanitiaan','$alasanKepanitiaan','$divisi','$alasan','$pengalaman','$ide','$nomor_hp','Menunggu','Menunggu')");
 	}
 
 	function update($nim, $nama, $kepanitiaan, $alasanKepanitiaan, $divisi, $alasan, $pengalaman, $ide, $nomor_hp){
