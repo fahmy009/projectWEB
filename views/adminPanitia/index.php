@@ -55,12 +55,12 @@
 					foreach ($mahasiswa as $mahasiswa) {
 						echo "
 						<tr>
-						<td width=\"20%\"><span>$mahasiswa[nim]</span></td>
-						<td><span>$mahasiswa[nama_mahasiswa]</span></td>
-						<td><span>$mahasiswa[divisi]</span></td>
+						<td width=\"20%\"><span>$mahasiswa[nim_panitia]</span></td>
+						<td><span>$mahasiswa[nama_panitia]</span></td>
+						<td><span>$mahasiswa[divisi_panitia]</span></td>
 						<td class=\"text-center\">
-						<button id=\"coba\" data-id=\"$mahasiswa[nim]\" type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal$mahasiswa[nim]\" ><span>Detail</span></button>
-						<a href=\"#myModal2&nim=$mahasiswa[nim]\"><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal2$mahasiswa[nim]\"><span>Nilai Wawancara</span></button></a>
+						<button id=\"coba\" data-id=\"$mahasiswa[nim_panitia]\" type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal$mahasiswa[nim_panitia]\" ><span>Detail</span></button>
+						<a href=\"#myModal2&nim=$mahasiswa[nim_panitia]\"><button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#myModal2$mahasiswa[nim_panitia]\"><span>Nilai Wawancara</span></button></a>
 						</td>
 						</tr>
 						";
@@ -74,7 +74,8 @@
 	$model = new m_panitia();
 	$mahasiswa = $model->showTableMenunggu();
 	foreach ($mahasiswa as $mahasiswa) {
-		$datamodal = "myModal2".$mahasiswa['nim'];
+		$datamodal = "myModal2".$mahasiswa['nim_panitia'];
+		$nim = $mahasiswa['nim_panitia'];
 		?>
 		<div class="modal fade" id="<?php echo $datamodal ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -84,64 +85,65 @@
 					</div>
 					<div class="modal-body">
 						<form role="form" action="<?php echo $this->config['route']->getAlamatRoot().'?c=c_panitia&f=nilai'?>" method="post">
+							<input type="hidden" name="nim_ambil" value="<?php echo $nim ?>">
 							<div class="form-group">
 								<label for="nim">Nilai Kejujuran</label>
 								<div class="radio">
-									<label><input type="radio" name="kejujuran">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kejujuran">10</label>
+									<label><input type="radio" name="kejujuran" value="1">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="2">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="3">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="4">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="5">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="6">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="7">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="8">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="9">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kejujuran" value="10">10</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="nim">Nilai Loyalitas</label>
 								<div class="radio">
-									<label><input type="radio" name="loyalitas">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="loyalitas">10</label>
+									<label><input type="radio" name="loyalitas" value="1">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="2">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="3">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="4">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="5">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="6">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="7">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="8">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="9">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="loyalitas" value="10">10</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="nim">Nilai Komitmen</label>
 								<div class="radio">
-									<label><input type="radio" name="komitmen">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="komitmen">10</label>
+									<label><input type="radio" name="komitmen" value="1">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="2">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="3">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="4">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="5">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="6">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="7">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="8">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="9">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="komitmen" value="10">10</label>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="nim">Nilai Kedisiplinan</label>
 								<div class="radio">
-									<label><input type="radio" name="kedisiplinan">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
-									<label><input type="radio" name="kedisiplinan">10</label>
+									<label><input type="radio" name="kedisiplinan" value="1">1</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="2">2</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="3">3</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="4">4</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="5">5</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="6">6</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="7">7</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="8">8</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="9">9</label>&nbsp;&nbsp;&nbsp;&nbsp;
+									<label><input type="radio" name="kedisiplinan" value="10">10</label>
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -157,7 +159,7 @@
 		$model = new m_panitia();
 		$mahasiswa = $model->showTableMenunggu();
 		foreach ($mahasiswa as $mahasiswa) {
-			$datamodal = "myModal".$mahasiswa['nim'];
+			$datamodal = "myModal".$mahasiswa['nim_panitia'];
 			?>
 			<div class="modal fade" id="<?php echo $datamodal ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
@@ -170,12 +172,12 @@
 								<tr>
 									<th width=\"25%\">NIM</th>
 									<td width=\"1%\"> : </td>
-									<td><span id=\"nim\"><?php echo "$mahasiswa[nim]" ?></span></td>
+									<td><span id=\"nim\"><?php echo "$mahasiswa[nim_panitia]" ?></span></td>
 								</tr>
 								<tr>
 									<th width=\"25%\">Nama Lengkap</th>
 									<td width=\"1%\"> : </td>
-									<td><span id=\"nama\"><?php echo "$mahasiswa[nama_mahasiswa]" ?></span></td>
+									<td><span id=\"nama\"><?php echo "$mahasiswa[nama_panitia]" ?></span></td>
 								</tr>
 								<tr>
 									<th width=\"25%\">Alasan Masuk</th>
@@ -185,7 +187,7 @@
 								<tr>
 									<th width=\"25%\">Divisi Kepanitiaan</th>
 									<td width=\"1%\"> : </td>
-									<td><span id=\"divisi\"><?php echo "$mahasiswa[divisi]" ?></span></td>
+									<td><span id=\"divisi\"><?php echo "$mahasiswa[divisi_panitia]" ?></span></td>
 								</tr>
 								<tr>
 									<th width=\"25%\">Ide Kegiatan</th>

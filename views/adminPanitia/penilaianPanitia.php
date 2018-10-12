@@ -58,19 +58,21 @@
 					$model = new m_panitia();
 					$mahasiswa = $model->showTable();
 					foreach ($mahasiswa as $mahasiswa) {
-						if ($mahasiswa['hasil'] == 'Diterima') {
+						if ($mahasiswa['hasil_panitia'] == 'Diterima') {
 							$hasil = 'btn-success';
-						} else {
+						} else if ($mahasiswa['hasil_panitia'] == 'Ditolak') {
 							$hasil = 'btn-danger';
+						} else {
+							$hasil = 'btn-warning';
 						}
 						echo "
 						<tr>
-						<td width=\"20%\"><span>$mahasiswa[nim]</span></td>
-						<td><span>$mahasiswa[nama_mahasiswa]</span></td>
-						<td><span>$mahasiswa[divisi]</span></td>
-						<td class=\"text-center\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button></td>
+						<td width=\"20%\"><span>$mahasiswa[nim_panitia]</span></td>
+						<td><span>$mahasiswa[nama_panitia]</span></td>
+						<td><span>$mahasiswa[divisi_panitia]</span></td>
+						<td class=\"text-center\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil_panitia]</span></button></td>
 						<td class=\"text-center\">
-						<button type=\"button\" class=\"btn btn-danger\" style=\"width: 100px;\"><span>Hapus</span></button>
+						<a href=\"index.php?c=c_panitia&f=hapus&id=$mahasiswa[nim_panitia]\"><button class=\"btn btn-danger\">Hapus</button></a>
 						</td>
 						</tr>
 						";

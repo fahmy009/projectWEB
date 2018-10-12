@@ -42,7 +42,7 @@
 				</ul>
 			</div>
 			<div class="col-md-9 well">
-				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2">Tambah Data</button>
+				<!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal2">Tambah Data</button> -->
 				<br>
 				<br>
 				<table class="table table-striped">
@@ -73,7 +73,7 @@
 						<td style=\"text-align: center;\">
 						<button class=\"btn btn-info\"  onclick=\"setData($mahasiswa[id_kepanitiaan])\" data-toggle=\"modal\" data-target=\"#formEdit\">Edit</button> 
 						<a href=\"index.php?c=c_kepanitiaan&f=hapus&id=$mahasiswa[id_kepanitiaan]\"><button class=\"btn btn-danger\">Hapus</button></a>
-						<button type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal\"><span class=\"fa fa-edit\"></span> Tampilkan</button>
+						<button id=\"coba\" data-id=\"$mahasiswa[nim]\" type=\"button\" class=\"btn btn-success\" data-toggle=\"modal\" data-target=\"#myModal$mahasiswa[nim]\" ><span> Detail</span></button>
 						</td>
 						</tr>
 						";
@@ -102,7 +102,7 @@
 									</div>
 									<div class="form-group">
 										<label >Hasil</label>
-										<select class="form-control" id="hasil">
+										<select class="form-control" id="hasil" name="hasil">
 											<option>Diterima</option>
 											<option>Ditolak</option>
 										</select>
@@ -116,154 +116,147 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header" style="background-color: #007A87; color: #fff; border-radius: 3px 3px 0px 0px;">
-								<h4 class="modal-title" id="myModalLabel">Pendaftaran Panitia</h4>
-							</div>
-							<div class="modal-body">
-								<form role="form" action="index.php?c=c_panitia&f=tambah" method="post">
-									<div class="form-group">
-										<label for="nim">NIM</label>
-										<input type="text" class="form-control" name="nim" placeholder="Masukkan NIM"/>
-									</div>
-									<div class="form-group">
-										<label for="nama">Nama Lengkap</label>
-										<input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap"/>
-									</div>
-									<div class="form-group">
-										<label for="kepanitiaan">Kepanitiaan</label>
-										<select class="form-control" name="kepanitiaan">
-											<option>Pelatihan Linux</option>
-											<option>P2MABA</option>
-											<option>Pelatihan Kewirausahaan</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="alasan">Alasan Mengikuti Kepanitiaan</label>
-										<textarea class="form-control" name="alasanKepanitiaan" placeholder="Masukkan Alasan"></textarea>
-									</div>
-									<div class="form-group">
-										<label for="divisi">Divisi</label>
-										<select class="form-control" name="divisi">
-											<option>Kesekretariatan</option>
-											<option>Konsumsi</option>
-											<option>Acara</option>
-											<option>Perlengkapan</option>
-											<option>Pubdekdok</option>
-											<option>Humas</option>
-										</select>
-									</div>
-									<label>Bersedia ditempatkan di Divisi Lain ?</label>
-									<div class="radio">
-										<label><input type="radio" name="alasan" value="ya">Ya</label>
-										&nbsp;
-										&nbsp;
-										&nbsp;
-										<label><input type="radio" name="alasan" value="tidak">Tidak</label>
-										<br>
-										<br>
-										<textarea class="form-control" name="alasan" placeholder="Masukkan Alasan Kenapa Tidak"></textarea>
-									</div>
-									<div class="form-group">
-										<label for="pengalaman">Pengalaman Kepanitiaan</label>
-										<br>
-										<label><input type="radio" name="pengalaman" value="ada"> Ada</label>
-										&nbsp;
-										&nbsp;
-										&nbsp;
-										<label><input type="radio" name="pengalaman" value="tidak"> Tidak</label>
-									</div>
-									<div class="form-group">
-										<label for="ide">Ide Kegiatan</label>
-										<textarea class="form-control" name="ide" placeholder="Masukkan Ide Kegiatan yang ingin anda lakukan"></textarea>
-									</div>
-									<div class="form-group">
-										<label for="nomer">Nomor HP / Telepon</label>
-										<input type="text" class="form-control" name="nomor_hp" placeholder="Masukkan Nomer Handphone"/>
-									</div>
-									<div class="modal-footer">
-										<button type="button" class="btn btn-danger" data-dismiss="modal"> Batal </button>
-										<button type="submit" class="btn btn-success" style="background-color: #007A87; color: #fff; border-color: #007A87;">Daftar</button>
-									</div>
-								</form>
-							</div><!-- Batas Container Input -->
-						</div>
-					</div>
-				</div>
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="myModalLabel">Data Pendaftar</h4>
-							</div>
-							<div class="modal-body">
-								<table class="table table-striped" width="100%">
-									<tr>
-										<th width="25%">NIM</th>
-										<td width="1%"> : </td>
-										<td> <span>152410101082</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Nama Lengkap</th>
-										<td width="1%"> : </td>
-										<td> <span>Muhammad Fahmy Amirun Nizar</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Alasan</th>
-										<td width="1%"> : </td>
-										<td> <span>Coba Coba</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Kepanitiaan</th>
-										<td width="1%"> : </td>
-										<td> <span>Pelatihan Linux</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Divisi</th>
-										<td width="1%"> : </td>
-										<td> <span>Perlengkapan</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Ditempatkan Divisi Lain</th>
-										<td width="1%"> : </td>
-										<td> <span>Bersedia</span></td>
-									</tr>  
-									<tr>
-										<th width="25%">Alasan Kenapa Tidak Bersedia</th>
-										<td width="1%"> : </td>
-										<td><span> - </span></td>
-									</tr>
-									<tr>
-										<th width="25%">Pengalaman Kepanitiaan</th>
-										<td width="1%"> : </td>
-										<td><span>Pernah Mengikuti Kepanitiaan Pelatihan Linux Tahun 2016</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Ide Kegiatan</th>
-										<td width="1%"> : </td>
-										<td><span>Membuat Meriah Acaranya</span></td>
-									</tr>
-									<tr>
-										<th width="25%">Nomor Handphone</th>
-										<td width="1%"> : </td>
-										<td><span>082330750358</span></td>
-									</tr>
-								</table>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<?php 
+				$model = new m_kepanitiaan();
+				$kepanitiaan = $model->showAll();
+				foreach ($kepanitiaan as $kepanitiaan) {
+					?>
+					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header" style="background-color: #007A87; color: #fff; border-radius: 3px 3px 0px 0px;">
+									<h4 class="modal-title" id="myModalLabel">Pendaftaran User Kepanitiaan</h4>
+								</div>
+								<div class="modal-body">
+									<form role="form" action="index.php?c=c_panitia&f=tambah" method="post">
+										<div class="form-group">
+											<label for="nim">NIM</label>
+											<input type="text" class="form-control" disabled name="nim" placeholder="Masukkan NIM" value="<?php echo $kepanitiaan['nim'] ?>" />
+										</div>
+										<div class="form-group">
+											<label for="nama">Nama Lengkap</label>
+											<input type="text" class="form-control" name="nama" placeholder="Masukkan Nama Lengkap"/>
+										</div>
+										<div class="form-group">
+											<label for="kepanitiaan">Kepanitiaan</label>
+											<select class="form-control" name="kepanitiaan">
+												<option>Pelatihan Linux</option>
+												<option>P2MABA</option>
+												<option>Pelatihan Kewirausahaan</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<label for="alasan">Alasan Mengikuti Kepanitiaan</label>
+											<textarea class="form-control" name="alasanKepanitiaan" placeholder="Masukkan Alasan"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="divisi">Divisi</label>
+											<select class="form-control" name="divisi">
+												<option>Kesekretariatan</option>
+												<option>Konsumsi</option>
+												<option>Acara</option>
+												<option>Perlengkapan</option>
+												<option>Pubdekdok</option>
+												<option>Humas</option>
+											</select>
+										</div>
+										<label>Bersedia ditempatkan di Divisi Lain ?</label>
+										<div class="radio">
+											<label><input type="radio" name="alasan" value="ya">Ya</label>
+											&nbsp;
+											&nbsp;
+											&nbsp;
+											<label><input type="radio" name="alasan" value="tidak">Tidak</label>
+											<br>
+											<br>
+											<textarea class="form-control" name="alasan" placeholder="Masukkan Alasan Kenapa Tidak"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="pengalaman">Pengalaman Kepanitiaan</label>
+											<br>
+											<label><input type="radio" name="pengalaman" value="ada"> Ada</label>
+											&nbsp;
+											&nbsp;
+											&nbsp;
+											<label><input type="radio" name="pengalaman" value="tidak"> Tidak</label>
+										</div>
+										<div class="form-group">
+											<label for="ide">Ide Kegiatan</label>
+											<textarea class="form-control" name="ide" placeholder="Masukkan Ide Kegiatan yang ingin anda lakukan"></textarea>
+										</div>
+										<div class="form-group">
+											<label for="nomer">Nomor HP / Telepon</label>
+											<input type="text" class="form-control" name="nomor_hp" placeholder="Masukkan Nomer Handphone"/>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-danger" data-dismiss="modal"> Batal </button>
+											<button type="submit" class="btn btn-success" style="background-color: #007A87; color: #fff; border-color: #007A87;">Daftar</button>
+										</div>
+									</form>
+								</div><!-- Batas Container Input -->
 							</div>
 						</div>
 					</div>
+					<?php
+				}
+				$model = new m_kepanitiaan();
+				$mahasiswa = $model->showTablePengumuman();
+				foreach ($mahasiswa as $mahasiswa) {
+					$datamodal = "myModal".$mahasiswa['nim'];
+					?>
+					<div class="modal fade" id="<?php echo $datamodal; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="modal-title" id="myModalLabel">Data Pendaftar</h4>
+								</div>
+								<div class="modal-body">
+									<table class="table table-striped" width="100%">
+										<tr>
+											<th width="25%">NIM</th>
+											<td width="1%"> : </td>
+											<td> <span><?php echo "$mahasiswa[nim]"; ?></span></td>
+										</tr>
+										<tr>
+											<th width="25%">Nama Lengkap</th>
+											<td width="1%"> : </td>
+											<td> <span><?php echo "$mahasiswa[nama_ketua]"; ?></span></td>
+										</tr>
+										<tr>
+											<th width="25%">Kepanitiaan</th>
+											<td width="1%"> : </td>
+											<td> <span><?php echo "$mahasiswa[kepanitiaan]"; ?></span></td>
+										</tr>
+										<tr>
+											<th width="25%">Divisi</th>
+											<td width="1%"> : </td>
+											<td> <span><?php echo "$mahasiswa[divisi]"; ?></span></td>
+										</tr>
+										<tr>
+											<th width="25%">Nomor Handphone</th>
+											<td width="1%"> : </td>
+											<td> <span><?php echo "$mahasiswa[nomorhp]"; ?></span></td>
+										</tr>          
+										<tr>
+											<th width="25%">Deskripsi Kepanitiaan</th>
+											<td width="1%"> : </td>
+											<td><span><?php echo "$mahasiswa[deskripsi]"; ?></span></td>
+										</tr>
+									</table>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
-	</div>
-	<script type="text/javascript">
-		function setData(id) {
-			var id_kepanitiaan = id;
+		<script type="text/javascript">
+			function setData(id) {
+				var id_kepanitiaan = id;
 			// alert(id_kepanitiaan);
 			<?php 
 			$model = new m_kepanitiaan();

@@ -35,24 +35,24 @@ require 'tampilan.php';
 					</tr>
 					<?php 
 					$model = new m_panitia();
-					$mahasiswa = $model->showTable();
+					$mahasiswa = $model->showAll();
 					foreach ($mahasiswa as $mahasiswa) {
-						if ($mahasiswa['hasil'] == 'Diterima') {
+						if ($mahasiswa['hasil_panitia'] == 'Diterima') {
 							$hasil = 'btn-success';
-						} else if ($mahasiswa['hasil'] == 'Ditolak') {
+						} else if ($mahasiswa['hasil_panitia'] == 'Ditolak') {
 							$hasil = 'btn-danger';
 						} else {
 							$hasil = 'btn-warning';
 						}
 						echo "
 						<tr>
-						<td width=\"20%\"><span>$mahasiswa[nim]</span></td>
-						<td><span>$mahasiswa[nama_mahasiswa]</span></td>
-						<td><span>$mahasiswa[nama_kepanitiaan]</span></td>
-						<td><span>$mahasiswa[divisi]</span></td>
-						<td><span>$mahasiswa[nilai]</span></td>
+						<td width=\"20%\"><span>$mahasiswa[nim_panitia]</span></td>
+						<td><span>$mahasiswa[nama_panitia]</span></td>
+						<td><span>$mahasiswa[kepanitiaan]</span></td>
+						<td><span>$mahasiswa[divisi_panitia]</span></td>
+						<td><span>$mahasiswa[nilai_panitia]</span></td>
 						<td class=\"text-center\">	
-						<a href=\"#\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil]</span></button></a>
+						<a href=\"#\"><button type=\"button\" class=\"btn $hasil\" style=\"width: 100px;\"><span>$mahasiswa[hasil_panitia]</span></button></a>
 						</td>
 						</tr>
 						";
