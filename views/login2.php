@@ -31,7 +31,9 @@
 
 	<div class="container">
 		<div class="row">
-			<h1>login bodo</h1>			
+			<h1>login bodo</h1>
+			<h2>login bodo</h2>
+			<p>Baru aja tak update kok</p>			
 		</div>
 	</div>
 
