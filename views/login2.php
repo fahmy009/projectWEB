@@ -17,5 +17,23 @@
 			<h1>login bodo</h1>			
 		</div>
 	</div>
+		<div class="container">
+		<div class="row">
+			<h1>login bodo</h1>			
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<h1>login bodo</h1>			
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<h1>login bodo</h1>			
+		</div>
+	</div>
+
 </body>
 </html>
