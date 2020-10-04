@@ -18,6 +18,12 @@
 						<li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=pengumumanKepanitiaanPage'?>">Pengumuman Kepanitiaan</a></li>
 						<li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=pengumumanPage'?>">Pengumuman Panitia</a></li>
 					</ul>
+					<ul>
+						<li>
+							<a href="#">HOME</a>
+							<a href="#">RUMAH</a>
+						</li>
+					</ul>
 				</li>
 				<li><a href="<?php echo $this->config['route']->getAlamatRoot().'?c=c_user&f=loginPage'?>">Masuk</a></li>
 			</ul>
