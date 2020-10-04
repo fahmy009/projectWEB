@@ -23,6 +23,7 @@
 							<div class="form-group">
 								<label for="username">Username</label>
 								<input type="text" name="username" class="form-control" id="username" placeholder="username" autofocus="on">
+								<input type="password" name="password" class="form-control" id="password" placeholder="password" autofocus="on">
 							</div>
 							<div class="form-group">
 								<label for="password">Password</label>
