@@ -74,5 +74,10 @@
       session_destroy();
       $this->config['route']->redirect('c_user','index');
     }
+
+    public function FunctionName($value='')
+    {
+     microtime();
+    }
   }
  ?>
