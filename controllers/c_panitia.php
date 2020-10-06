@@ -78,13 +78,13 @@ function nilai(){
   $kedisiplinan_mod = $_POST['kedisiplinan'] % 2;
 
 
-  // if ($nilai >= 30) {
-  //   $hasil = 'Sangat Baik';
-  //   $status = 'Diterima';
-  // // } else {
-  //   $hasil = 'Sangat Buruk';
-  //   $status = 'Ditolak';
-  // }
+  if ($nilai >= 30) {
+    $hasil = 'Sangat Baik';
+    $status = 'Diterima';
+  // } else {
+    $hasil = 'Sangat Buruk';
+    $status = 'Ditolak';
+  }
 
 
   if ($kejujuran_mod == 0 && $loyalitas_mod == 0 && $komitmen_mod == 0 && $kedisiplinan_mod == 0 && $nilai >= 30) {
@@ -156,6 +156,11 @@ function nilai(){
 $model = new m_panitia();
 $model->updateNilai($nim, $hasil, $status);
 $this->config['route']->redirect('c_panitia', 'penilaian');
+}
+
+public function FunctionName($value='')
+{
+ $this->redirect('c_panitia','c_panitia');
 }
 
 }
