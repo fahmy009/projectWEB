@@ -70,5 +70,11 @@ class c_kepanitiaan {
   $this->config['route']->redirect('c_kepanitiaan','kepanitiaan');
 }
 
+function tambahUpdate(){
+  $id = $_POST['id_kepanitiaan'];
+  $nama = $_POST['nama'];
+  $this->config['route']->redirect('c_kepanitiaan','kepanitiaan');
+}
+
 }
 ?>
